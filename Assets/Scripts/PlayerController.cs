@@ -4,20 +4,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    [Tooltip("In ms^-1")][SerializeField] float speed = 30f;
+    [Header("General")]
+    [Tooltip("In ms^-1")] [SerializeField] float controlSpeed = 30f;
     [Tooltip("In m")] [SerializeField] float xRange = 12f;
     [Tooltip("In m")] [SerializeField] float yRange = 8f;
 
+    [Header("Screen-position Based")]
     [SerializeField] float positionPitchFactor = -2f;
-    [SerializeField] float controlPitchFactor = -20f;
     [SerializeField] float positionYawFactor = 1.5f;
+
+    [Header("Control-throw Based")]
+    [SerializeField] float controlPitchFactor = -20f;
     [SerializeField] float controlRollFactor = -20f;
 
     float xThrow, yThrow;
+    bool isControlsEnabled = true;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Application.targetFrameRate = 60;
     }
@@ -25,8 +31,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ProcessTranslation();
-        ProcessRotation();
+        if (isControlsEnabled)
+        {
+            ProcessTranslation();
+            ProcessRotation();
+        }
     }
 
     private void ProcessTranslation()
@@ -34,8 +43,8 @@ public class Player : MonoBehaviour
         xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
         yThrow = CrossPlatformInputManager.GetAxis("Vertical");
 
-        float xOffset = xThrow * speed * Time.deltaTime;
-        float yOffset = yThrow * speed * Time.deltaTime;
+        float xOffset = xThrow * controlSpeed * Time.deltaTime;
+        float yOffset = yThrow * controlSpeed * Time.deltaTime;
 
         float rawXPos = xOffset + transform.localPosition.x;
         float clampedXPos = Mathf.Clamp(rawXPos, -xRange, xRange);
@@ -57,5 +66,10 @@ public class Player : MonoBehaviour
         float roll = xThrow * controlRollFactor;
 
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+    }
+
+    private void OnPlayerDeath() // called by string reference
+    {
+        isControlsEnabled = false;
     }
 }
