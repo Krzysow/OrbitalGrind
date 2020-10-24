@@ -81,6 +81,9 @@ MonoBehaviour:
   controlSpeed: 20
   xRange: 16
   yRange: 10
+  guns:
+  - {fileID: 8117732022996289384}
+  - {fileID: 5276076725109819307}
   positionPitchFactor: -2
   positionYawFactor: 2.5
   controlPitchFactor: -20
@@ -5061,13 +5064,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5578000425968688098, guid: 24071d21e60654294879563a07584d5c, type: 3}
       propertyPath: m_Name
-      value: Bullets Right
+      value: Gun Right
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24071d21e60654294879563a07584d5c, type: 3}
 --- !u!4 &5276076725109819304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5578000425968688097, guid: 24071d21e60654294879563a07584d5c, type: 3}
+  m_PrefabInstance: {fileID: 311146426039524425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5276076725109819307 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5578000425968688098, guid: 24071d21e60654294879563a07584d5c, type: 3}
   m_PrefabInstance: {fileID: 311146426039524425}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4453764909608901770
@@ -5123,13 +5131,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5578000425968688098, guid: 24071d21e60654294879563a07584d5c, type: 3}
       propertyPath: m_Name
-      value: Bullets Left
+      value: Gun Left
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24071d21e60654294879563a07584d5c, type: 3}
 --- !u!4 &8117732022996289387 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5578000425968688097, guid: 24071d21e60654294879563a07584d5c, type: 3}
+  m_PrefabInstance: {fileID: 4453764909608901770}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8117732022996289384 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5578000425968688098, guid: 24071d21e60654294879563a07584d5c, type: 3}
   m_PrefabInstance: {fileID: 4453764909608901770}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5502016059479328830
